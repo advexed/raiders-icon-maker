@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Raiders Icon Maker</title>
+    <meta name="description"
+        content="Make your own custom Splatoon Raiders icons and export them, all for free!">
+    <meta name="author" content="advexed">
+    <meta name="keywords" content="Splatoon, Raiders, Icon, Icons, Icon Maker, Icon Creator, PFP maker">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css" />
+    <script src="https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js"></script>
+    <script src="scripts.js"></script>
+</head>
+
+<body>
+    <main>
+        <header id="title">Raiders Icon Maker</header>
+        <section id="content" class="step1">
+            <button id="back" onclick="retreatStep()"></button>
+            <ul class="navigation">
+                <li id="type">
+                    <span class="textbox">
+                        <div class="left"></div>
+                        <div class="center">
+                            <h1>How do you wanna look?</h1>
+                        </div>
+                        <div class="right"></div>
+                    </span>
+                    <div class="buttons">
+                        <button id="look0"></button>
+                        <button id="look1"></button>
+                        <button id="look2"></button>
+                        <button id="look3"></button>
+                    </div>
+                </li>
+                <li id="hair">
+                    <span class="textbox">
+                        <div class="left"></div>
+                        <div class="center">
+                            <h1>Which hairstyle ya feeling?</h1>
+                        </div>
+                        <div class="right"></div>
+                    </span>
+
+                    <div class="buttons">
+                        <button id="hair0"></button>
+                        <button id="hair1"></button>
+                        <button id="hair2"></button>
+                        <button id="hair3"></button>
+                        <button id="hair4"></button>
+                        <button id="hair5"></button>
+                        <button id="hair6"></button>
+                    </div>
+                </li>
+                <li id="eyebrows">
+                    <span class="textbox">
+                        <div class="left"></div>
+                        <div class="center">
+                            <h1>How about brows...</h1>
+                        </div>
+                        <div class="right"></div>
+                    </span>
+                    <div class="buttons">
+                        <button id="brows0"></button>
+                        <button id="brows1"></button>
+                        <button id="brows2"></button>
+                        <button id="brows3"></button>
+                    </div>
+                </li>
+                <li id="skin">
+                    <span class="textbox">
+                        <div class="left"></div>
+                        <div class="center">
+                            <h1>Now dial in your complexion.</h1>
+                        </div>
+                        <div class="right"></div>
+                    </span>
+                    <div class="buttons">
+                        <button id="skin0"></button>
+                        <button id="skin1"></button>
+                        <button id="skin2"></button>
+                        <button id="skin3"></button>
+                        <button id="skin4"></button>
+                        <button id="skin5"></button>
+                        <button id="skin6"></button>
+                        <button id="skin7"></button>
+                        <button id="skin8"></button>
+                    </div>
+                </li>
+                <li id="col">
+                    <span class="textbox">
+                        <div class="left"></div>
+                        <div class="center">
+                            <h1>And lastly, your ink colour.</h1>
+                        </div>
+                        <div class="right"></div>
+                    </span>
+                    <div class="buttons">
+                        <input id="colour" data-coloris=""></input>
+                    </div>
+                    <button onclick="this.classList.add('active'); advanceStep();" id="complete">All set!</button>
+                </li>
+                <li id="download">
+                    <span class="textbox">
+                        <div class="left"></div>
+                        <div class="center">
+                            <h1>Looking fresh!</h1>
+                        </div>
+                        <div class="right"></div>
+                    </span>
+                    <div class="container">
+                        <img id="preview" src="">
+                        <button onclick="downloadIcon(this);" id="save">Save</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+        <footer>All assets belong to Nintendo.<br>advexed, 2026 - <a href="https://x.com/advexedd">twitter</a> - <a href="https://github.com/advexed/raiders-icon-maker/">github</a></footer>
+    </main>
+</body>
+</html>

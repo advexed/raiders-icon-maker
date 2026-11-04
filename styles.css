@@ -1,0 +1,532 @@
+@font-face {
+  font-family: Raiders;
+  src: url(assets/NinDev-Treasure_00.ttf);
+}
+@font-face {
+  font-family: Splatoon;
+  src: url(assets/SpMain.ttf);
+}
+html {
+  width: 100dvw;
+  height: 100dvh;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-top);
+}
+
+body {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #002618;
+}
+
+main {
+  display: flex;
+  border-radius: 0px;
+  flex-direction: column;
+  position: relative;
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #00221c;
+  background-image: url(assets/ui/patterncollage.png);
+  background-repeat: repeat;
+  background-size: 60%;
+  background-blend-mode: overlay;
+}
+main * {
+  text-align: center;
+  box-sizing: border-box;
+  font-family: Splatoon;
+  text-shadow: 0.1em 0.1em 0.005em rgba(0, 0, 0, 0.8);
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: #fff;
+}
+
+button {
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-size: cover;
+  border: none;
+  background: none;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in, transform 0.07s linear;
+  will-change: transform;
+}
+button:active {
+  transform: scale(0.95);
+  transition: none;
+}
+button:not(#download):before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  background-size: cover;
+  filter: brightness(0) saturate(100%);
+  z-index: -1;
+  top: 0;
+  opacity: 0.5;
+}
+button:not(#download)::after {
+  position: absolute;
+  background-size: cover;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  display: flex;
+  z-index: 0;
+}
+
+footer {
+  font-family: Raiders;
+  text-align: center;
+  font-size: 0.6em;
+  margin: 1em;
+}
+footer a {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+#back {
+  width: 4em;
+  height: 4em;
+  display: block;
+  rotate: 90deg;
+  position: absolute;
+  bottom: 4em;
+  margin: 2em;
+}
+#back:before, #back::after {
+  background-image: url(assets/ui/backarrow.png);
+}
+#back::before {
+  transform: translateX(0.2em) translateY(-0.3em);
+}
+#back {
+  z-index: 1;
+}
+
+@media (min-width: 920px) {
+  main {
+    max-width: 920px;
+    max-height: 600px;
+    border-radius: 1em;
+    box-shadow: 0.2em 0.2em 0 rgba(0, 0, 0, 0.4392156863);
+  }
+  #back {
+    top: 0;
+    bottom: unset;
+  }
+}
+header {
+  font-family: Raiders;
+  font-size: 1.5em;
+  text-align: center;
+  margin: 15px;
+}
+
+.textbox {
+  height: 10vh;
+  max-height: 100px;
+  opacity: 0.9;
+  display: flex;
+  justify-content: center;
+}
+.textbox .left {
+  aspect-ratio: 174/340;
+  height: 100%;
+  background-image: url(assets/ui/textbox_left.png);
+  background-size: cover;
+}
+.textbox .center {
+  background-image: url(assets/ui/textbox_center.png);
+  height: 100%;
+  aspect-ratio: 1340/340;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.textbox .right {
+  aspect-ratio: 174/340;
+  height: 100%;
+  background-image: url(assets/ui/textbox_right.png);
+  background-size: cover;
+}
+
+h1 {
+  font-size: 3em;
+  text-wrap: nowrap;
+}
+
+#content {
+  overflow-x: hidden;
+  display: flex;
+  flex: 1;
+}
+#content.step1 li:not(#type) {
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+#content.step1 li#type {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+#content.step1 #back {
+  opacity: 0;
+  pointer-events: none;
+  cursor: default;
+}
+#content.step2 li:not(#hair) {
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+#content.step2 li#type {
+  transform: translateX(-100%);
+}
+#content.step2 li#hair {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+#content.step3 li:not(#eyebrows) {
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+#content.step3 li#hair,
+#content.step3 li#type {
+  transform: translateX(-100%);
+}
+#content.step3 li#eyebrows {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+#content.step4 li:not(#skin) {
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+#content.step4 li#hair,
+#content.step4 li#type,
+#content.step4 li#eyebrows {
+  transform: translateX(-100%);
+}
+#content.step4 li#skin {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+#content.step5 li:not(#col) {
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+#content.step5 li#hair,
+#content.step5 li#type,
+#content.step5 li#eyebrows,
+#content.step5 li#skin {
+  transform: translateX(-100%);
+}
+#content.step5 li#col {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+#content.step6 li:not(#download) {
+  opacity: 0;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+#content.step6 li#hair,
+#content.step6 li#type,
+#content.step6 li#eyebrows,
+#content.step6 li#skin,
+#content.step6 li#col {
+  transform: translateX(-100%);
+}
+#content.step6 li#download {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+ul {
+  flex-grow: 1;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: grid;
+  list-style-type: none;
+}
+
+li {
+  grid-column: 1;
+  grid-row: 1;
+  transform: translateX(0);
+  flex-direction: column;
+  display: flex;
+  justify-content: start;
+  overflow: hidden;
+  font-size: 0.5em;
+  transition: transform 0.3s ease-in, opacity 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  position: relative;
+  will-change: transform;
+}
+li#download, li#col {
+  align-items: center;
+  position: relative;
+}
+li#skin .buttons, li#col .buttons {
+  padding-top: 7em;
+}
+
+#preview {
+  aspect-ratio: 354/512;
+  flex: 1;
+  width: 22em;
+  -webkit-touch-callout: default;
+  position: relative;
+  display: block;
+  z-index: -1;
+  transform: translateY(-1em);
+}
+
+.container {
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#slop {
+  background: #fff;
+  width: 50px;
+  height: 50px;
+}
+
+.buttons {
+  padding: 2.1em 2em 0 2em;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  overflow-y: scroll;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: start;
+}
+
+#type button {
+  height: 200px;
+  aspect-ratio: 374/450;
+}
+#type button::after, #type button::before {
+  background-image: url(assets/ui/typesheet_col.png), url(assets/ui/typesheet_body.png);
+}
+
+#skin .buttons button {
+  height: 80px;
+  aspect-ratio: 532/484;
+}
+#skin .buttons button:before, #skin .buttons button:after {
+  background: url(assets/ui/skin_sheet.png);
+  background-size: cover;
+  content: "";
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+#skin .buttons button:before {
+  transform: translateX(0.1em) translateY(0.08em);
+}
+#skin .buttons button.selected:after, #skin .buttons button.selected::before {
+  animation: skin_select 0.08s steps(4, jump-none);
+  animation-fill-mode: both;
+}
+
+#hair .buttons button {
+  height: 180px;
+  aspect-ratio: 1592/2303;
+}
+#hair.squid .buttons button::after, #hair.squid .buttons button::before {
+  background-image: url(assets/ui/hairsheet_squid.png), url(assets/ui/hairsheet_squid.png), url(assets/ui/face_squid.png);
+}
+#hair.octo .buttons button::after, #hair.octo .buttons button::before {
+  background-image: url(assets/ui/hairsheet_octo.png), url(assets/ui/hairsheet_octo.png), url(assets/ui/face_octo.png);
+}
+
+#hair .buttons button.selected::after,
+#type .buttons button.selected::after,
+#eyebrows .buttons button.selected::after {
+  filter: saturate(3) hue-rotate(-134deg);
+}
+#hair .buttons button.selected::before,
+#type .buttons button.selected::before,
+#eyebrows .buttons button.selected::before {
+  transform: translateX(0.2em) translateY(0.35em);
+}
+#hair .buttons button.selected,
+#type .buttons button.selected,
+#eyebrows .buttons button.selected {
+  transform: scale(1.1) rotate(-4deg);
+}
+
+#eyebrows .buttons button {
+  height: 180px;
+  aspect-ratio: 1416/2048;
+}
+
+#skin0::after {
+  filter: invert(92%) sepia(11%) saturate(309%) hue-rotate(328deg) brightness(94%) contrast(92%);
+}
+
+#skin1::after {
+  filter: invert(84%) sepia(28%) saturate(257%) hue-rotate(342deg) brightness(97%) contrast(95%);
+}
+
+#skin2::after {
+  filter: invert(77%) sepia(17%) saturate(493%) hue-rotate(330deg) brightness(96%) contrast(103%);
+}
+
+#skin3::after {
+  filter: invert(79%) sepia(16%) saturate(849%) hue-rotate(339deg) brightness(93%) contrast(91%);
+}
+
+#skin4::after {
+  filter: invert(72%) sepia(19%) saturate(834%) hue-rotate(333deg) brightness(94%) contrast(90%);
+}
+
+#skin5::after {
+  filter: invert(56%) sepia(48%) saturate(432%) hue-rotate(339deg) brightness(87%) contrast(84%);
+}
+
+#skin6::after {
+  filter: invert(42%) sepia(48%) saturate(423%) hue-rotate(341deg) brightness(90%) contrast(90%);
+}
+
+#skin7::after {
+  filter: invert(27%) sepia(8%) saturate(1399%) hue-rotate(349deg) brightness(96%) contrast(83%);
+}
+
+#skin8::after {
+  filter: invert(18%) sepia(29%) saturate(429%) hue-rotate(345deg) brightness(93%) contrast(87%);
+}
+
+@keyframes skin_select {
+  from {
+    background-position-x: 0px;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+@keyframes button_press {
+  from {
+    background-position-x: 0px;
+  }
+  to {
+    background-position-x: 100%;
+  }
+}
+#look1::before,
+#look1::after {
+  background-position-x: 33.3333333333%;
+}
+
+#look2::before,
+#look2::after {
+  background-position-x: 66.6666666667%;
+}
+
+#look3::before,
+#look3::after {
+  background-position-x: 100%;
+}
+
+#hair1::before,
+#hair1::after {
+  background-position-x: 16.6666666667%;
+}
+
+#hair2::before,
+#hair2::after {
+  background-position-x: 33.3333333333%;
+}
+
+#hair3::before,
+#hair3::after {
+  background-position-x: 50%;
+}
+
+#hair4::before,
+#hair4::after {
+  background-position-x: 66.6666666667%;
+}
+
+#hair5::before,
+#hair5::after {
+  background-position-x: 83.3333333333%;
+}
+
+#hair6::before,
+#hair6::after {
+  background-position-x: 100%;
+}
+
+#complete,
+#save {
+  background-image: url(assets/ui/button_sheet.png);
+  background-size: cover;
+  aspect-ratio: 7480/4680;
+  height: 150px;
+  font-family: Raiders;
+}
+#complete.active,
+#save.active {
+  animation: button_press 0.15s steps(12, jump-none);
+  animation-fill-mode: both;
+}
+
+#save {
+  position: fixed;
+  bottom: 0;
+}
+
+#colour {
+  height: 2em;
+  min-height: 2em;
+  width: 200px;
+  font-size: 2.5em;
+  background-color: rgba(0, 34, 28, 0.6666666667);
+  border: 2px solid #003f34;
+  border-radius: 5px;
+}
+
+#clr-picker {
+  overflow: hidden;
+  background-color: rgba(0, 34, 28, 0.6666666667);
+  backdrop-filter: blur(10px);
+  border: 2px solid #003f34;
+}
