@@ -45,6 +45,8 @@ function initSite() {
     finish_sfx = new Audio('assets/ui/finish.wav')
 
     styles = document.styleSheets[0]
+
+    document.querySelector('.clr-field').style.color = "rgb(38, 204, 179)"
 }
 
 var img
@@ -177,8 +179,12 @@ async function downloadIcon(button) {
     button.classList.add(`active`)
     await wait(250)
     let anchor = document.createElement('a')
-    anchor.href = img
+    let url = await fetch(img)
+    let blob = await url.blob()
+    let data = URL.createObjectURL(blob)
+    anchor.href = data
     anchor.download = 'icon'
+    document.body.appendChild(anchor)
     anchor.click()
     anchor.remove
 }
@@ -334,6 +340,3 @@ function hslToRgb(h, s, l) {
 
     return `rgb(${r * 255},${g * 255},${b * 255})`;
 }
-
-
-

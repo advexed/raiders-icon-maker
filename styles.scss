@@ -361,7 +361,7 @@ li {
     -webkit-touch-callout: default;
     position: relative;
     display: block;
-    z-index: -1;
+    z-index: 0;
     transform: translateY(-1em);
 }
 
@@ -369,7 +369,7 @@ li {
     min-width: 240px;
     display: flex;
     flex-direction: column;
-    overflow-y: scroll;
+    overflow-y: auto;
     justify-content: space-between;
     align-items: center;
 }
@@ -386,7 +386,7 @@ li {
     z-index: 1;
     display: flex;
     flex: 1;
-    overflow-y: scroll;
+    overflow-y: auto;
     flex-wrap: wrap;
     justify-content: center;
     align-content: start;
@@ -614,8 +614,7 @@ li {
     font-size: 2.5em;
     background-color: #00221caa;
     // backdrop-filter: blur(10px);
-    border: 2px solid #003f34;
-    border-radius: 5px;
+    border: none;
     // border: 1px solid #fff;
     // text-wrap: nowrap;
     // color: rgba(0, 0, 0, 0);
@@ -627,8 +626,13 @@ li {
     background-color: #00221caa;
     backdrop-filter: blur(10px);
     border: 2px solid #003f34;
-
-    // button, button::before {
-    //     display: none;
-    // }
+}
+.clr-field {
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid #003f34;
+    backdrop-filter: blur(10px);
+    button {
+        border-left: 2px solid #003f34 !important;
+    }
 }
